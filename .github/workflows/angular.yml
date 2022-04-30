@@ -39,7 +39,7 @@ jobs:
           npm ci
       - name: Tests
         run: |
-          ng run test
+          npm run test
       - name: Build
         run: |
           npm run build --prod
