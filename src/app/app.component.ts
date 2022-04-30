@@ -42,7 +42,7 @@ export const DistanceConfig = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements  AfterViewInit {
   title = 'FronDLContinua';
   name = "Angular";
   cx;
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(private el: ElementRef,private http: HttpService) {}
 
-  ngOnInit() {}
+
 
   ngAfterViewInit(): void {
     const canvasEl: HTMLCanvasElement = this.myCanvas.nativeElement;

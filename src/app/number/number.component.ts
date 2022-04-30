@@ -41,7 +41,7 @@ export const DistanceConfig = {
   templateUrl: './number.component.html',
   styleUrls: ['./number.component.css']
 })
-export class NumberComponent implements OnInit, AfterViewInit {
+export class NumberComponent implements  AfterViewInit {
   title = 'FronDLContinua';
   name = "Angular";
   cx;
@@ -57,7 +57,6 @@ export class NumberComponent implements OnInit, AfterViewInit {
 
   constructor(private el: ElementRef,private http: HttpService) {}
 
-  ngOnInit() {}
 
   ngAfterViewInit(): void {
     const canvasEl: HTMLCanvasElement = this.myCanvas.nativeElement;
@@ -127,14 +126,15 @@ export class NumberComponent implements OnInit, AfterViewInit {
             }
         }
         this.resultDS += "]]"
-    console.log(this.resultDS);
-    this.sendToAWS()
+    this.sendToAWS(this.resultDS)
       }
     
   }
-  sendToAWS(){
-    this.http.getNumber(this.resultDS).then((data)=>{console.log(data);
+  sendToAWS(data){
+    
+    this.http.getNumber(data).then((data)=>{console.log(data);
     this.result=data
+    return data
     })
 
   }

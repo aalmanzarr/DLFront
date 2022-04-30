@@ -17,8 +17,20 @@ module.exports = function (config) {
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/FronDLContinua'),
-      reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
+
+      fixWebpackSourcePaths: true,
+      thresholds: {
+        emitWarning: true, // set to `true` to not fail the test command when thresholds are not met
+        // thresholds for all files
+        global: {
+          statements: 10,
+          lines: 10,
+          branches: 10,
+          functions: 10
+        },
+
+      },
+      reporters: ['progress', 'kjhtml','html',  'text-summary'],
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,

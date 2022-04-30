@@ -7,7 +7,9 @@ import { NumberComponent } from './number/number.component';
 
 const routes: Routes = [
   {path:'number',component:NumberComponent},
-  {path:'**',component:NumberComponent}
+  {path:'not',component:NotfoundComponent},
+  {path:'**',component:NumberComponent},
+
 ];
 
 @NgModule({
