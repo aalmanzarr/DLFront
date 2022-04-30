@@ -1,22 +1,18 @@
 const express = require("express");
+var path = require('path');        
+const port = process.env.PORT ||3000;   
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use('/js', express.static(__dirname + '/js'));
-app.use('/dist', express.static(__dirname + '/../dist'));
-app.use('/css', express.static(__dirname + '/css'));
-app.use('/partials', express.static(__dirname + '/partials'));
 
-app.all('/*', function(req, res, next) {
-    // Just send the index.html for other files to support HTML5Mode
-    res.sendFile('src/index.html', { root: __dirname });
-});
-app.get("/su", (req, res) => {
-   res.send("Hello from NodeJS!");
+//Set the base path to the angular-test dist folder
+app.use(express.static(path.join(__dirname, 'FronDLContinua')));
+
+//Any routes will be redirected to the angular app
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'FronDLContinua/index.html'));
 });
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+//Starting server on port 8081
+app.listen(port, () => {
+    console.log('Server started!');
+    console.log(port);
 });
